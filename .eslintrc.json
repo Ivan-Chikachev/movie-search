@@ -27,8 +27,8 @@
     "react/jsx-closing-bracket-location": 1,
     "react/jsx-curly-spacing": 1,
     "react/jsx-handler-names": 0,
-    "react/jsx-indent-props": 1,
-    "react/jsx-indent": 1,
+    "react/jsx-indent-props": 0,
+    "react/jsx-indent": 0,
     "react/jsx-key": 1,
     "react/jsx-max-props-per-line": 0,
     "react/jsx-no-bind": 0,
@@ -64,6 +64,10 @@
     "react/static-property-placement": 0,
     "react/destructuring-assignment": 0,
     "no-param-reassign": 0,
-    "consistent-return": 0
+    "consistent-return": 0,
+    "new-cap": 0,
+    "no-underscore-dangle": 0,
+    "no-return-await": 0,
+    "camelcase": 0
   }
 }
