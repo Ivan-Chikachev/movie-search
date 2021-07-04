@@ -1,6 +1,7 @@
 import React from 'react';
 import { Card, Col } from 'antd';
 import { format } from 'date-fns';
+import PropTypes from 'prop-types';
 import cutText from '../functions/cutText';
 
 const MovieItem = ({
@@ -26,6 +27,12 @@ const MovieItem = ({
             </Card>
         </Col>
   );
+};
+MovieItem.propTypes = {
+  poster_path: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  release_date: PropTypes.string.isRequired,
+  overview: PropTypes.string.isRequired,
 };
 
 export default MovieItem;

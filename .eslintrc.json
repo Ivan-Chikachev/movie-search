@@ -68,6 +68,7 @@
     "new-cap": 0,
     "no-underscore-dangle": 0,
     "no-return-await": 0,
-    "camelcase": 0
+    "camelcase": 0,
+    "indent": 0
   }
 }
