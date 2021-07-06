@@ -4,11 +4,11 @@ import 'antd/dist/antd.css';
 import { Layout } from 'antd';
 import Movies from './components/Movies';
 
-function App() {
-  const { Content } = Layout;
+const { Content } = Layout;
 
+function App() {
   return (
-      <Layout className="container">
+      <Layout>
           <Content>
               <Movies />
           </Content>

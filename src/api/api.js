@@ -11,9 +11,9 @@ export default class moviesAPI {
         return await res.json();
     }
 
-    async getAllMovies(page = 1, query = 'return') {
-        const res = await this.getResource(`search/movie?${page}&query=${query}&${this._apiKey}`);
-        return res.results;
+    async getAllMovies(page, query) {
+        const res = await this.getResource(`search/movie?page=${page}&query=${query}&${this._apiKey}`);
+        return res;
     }
 
     getMovie(id) {
