@@ -2,15 +2,24 @@ import React from 'react';
 import { Typography } from 'antd';
 import PropTypes from 'prop-types';
 import cutText from '../../functions/cutText';
-import RateMovies from './RateMovies';
+import RateMovie from './RateMovies';
+import Rating from '../../Rating';
 
 const { Text } = Typography;
 
-const Description = ({ date, overview }) => (
+const Description = ({
+ date, id, overview, voteAverage, valueRate, onChangeRateMovie,
+}) => (
+
     <div>
         <Text strong>{date}</Text>
         <div>{cutText(overview)}</div>
-        <RateMovies />
+        <RateMovie
+            onChangeRateMovie={onChangeRateMovie}
+            id={id}
+            valueRate={valueRate}
+        />
+        <Rating voteAverage={voteAverage} />
     </div>
 );
 

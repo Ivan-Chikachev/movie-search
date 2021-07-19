@@ -4,14 +4,13 @@ import PropTypes from 'prop-types';
 import Error from '../Error';
 import Loader from '../Loader';
 import NotFound from '../NotFound';
-import SearchMovie from '../Search';
 import MovieItem from '../MovieItem/MovieItem';
 import MoviesPagination from '../Pagination';
 
-const Movies = ({
+const GuestSessionMovies = ({
                     isLoad, movies, isError, currentPage,
                     totalMovies, onPaginationChange,
-                    onChange, valueRate, onChangeRateMovie,
+                    onChange, valueRate,
                 }) => {
     const hasData = !movies.length && !isLoad && !isError;
 
@@ -21,11 +20,6 @@ const Movies = ({
 
     return (
         <div>
-            <Row justify="center">
-                <Col span={20}>
-                    <SearchMovie onChange={onChange} />
-                </Col>
-            </Row>
             <Row justify="center">
                 <Col span={2}>
                     {loader}
@@ -44,7 +38,7 @@ const Movies = ({
             <Row justify="center">
                 {movies.map((i) => (
                     <Col span={10} key={i.id}>
-                        <MovieItem {...i} valueRate={valueRate} onChangeRateMovie={onChangeRateMovie} />
+                        <MovieItem {...i} valueRate={valueRate} />
                     </Col>
                 ))}
             </Row>
@@ -59,20 +53,4 @@ const Movies = ({
     );
 };
 
-Movies.defaulProps = {
-    onPaginationChange: () => {
-    },
-    onChange: () => {
-    },
-};
-Movies.propTypes = {
-    isLoad: PropTypes.bool.isRequired,
-    movies: PropTypes.arrayOf(PropTypes.object).isRequired,
-    isError: PropTypes.bool.isRequired,
-    currentPage: PropTypes.number.isRequired,
-    totalMovies: PropTypes.number.isRequired,
-    onPaginationChange: PropTypes.func.isRequired,
-    onChange: PropTypes.func.isRequired,
-};
-
-export default Movies;
+export default GuestSessionMovies;

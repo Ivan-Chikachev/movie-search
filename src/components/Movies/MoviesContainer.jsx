@@ -12,10 +12,16 @@ export default class MoviesContainer extends Component {
         totalMovies: 0,
         currentPage: 1,
         labelSearch: 'a',
+        valueRate: 0,
     }
 
     componentDidMount() {
         this.getMovies(this.state.currentPage, this.state.labelSearch);
+        this.moviesAPI.getToken()
+            .then((i) => i.guest_session_id)
+            .then((i) => {
+                sessionStorage.setItem('guest_session_id', i);
+            });
     }
 
     componentDidUpdate(prevProps, prevState) {
@@ -65,10 +71,15 @@ export default class MoviesContainer extends Component {
         });
     };
 
+    onChangeRateMovie = (id, value) => {
+       this.moviesAPI.setRateMovie(id, value);
+    }
+
     render() {
         return (
             <Movies
                 {...this.state}
+                onChangeRateMovie={this.onChangeRateMovie}
                 onPaginationChange={this.onPaginationChange}
                 onChange={this.onChange}
             />

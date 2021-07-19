@@ -3,17 +3,17 @@ import { Pagination } from 'antd';
 import PropTypes from 'prop-types';
 
 const MoviesPagination = ({ total, onPaginationChange, currentPage }) => (
-        total > 20
-            ? (
-<Pagination
+    total > 20
+        ? (
+            <Pagination
                 showQuickJumper
                 current={currentPage}
                 onChange={onPaginationChange}
                 total={total}
-/>
-)
-            : null
-    );
+            />
+        )
+        : null
+);
 
 MoviesPagination.defaultProps = {
     onPaginationChange: () => {

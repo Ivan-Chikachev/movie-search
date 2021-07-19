@@ -3,10 +3,8 @@ import { Input } from 'antd';
 import PropTypes from 'prop-types';
 import debounce from 'lodash.debounce';
 
-const { Search } = Input;
-
 const SearchMovie = ({ onChange }) => (
-    <Search
+    <Input
         placeholder="input search text"
         allowClear
         onChange={debounce(onChange, 500)}

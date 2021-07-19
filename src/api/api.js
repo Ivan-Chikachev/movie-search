@@ -16,7 +16,24 @@ export default class moviesAPI {
         return res;
     }
 
-    getMovie(id) {
-        return this.getResource(`movie/${id}?${this._apiKey}`);
+    async getToken() {
+        return await this.getResource(`/authentication/guest_session/new?${this._apiKey}`);
+    }
+
+    async getGuestSessionMovies() {
+        const sessionId = sessionStorage.getItem('guest_session_id');
+        return await this.getResource(`/guest_session/${sessionId}/rated/movies?${this._apiKey}`);
+    }
+
+    async setRateMovie(id, value) {
+        const sessionId = sessionStorage.getItem('guest_session_id');
+        const res = fetch(`${this._apiBase}movie/${id}/rating?${this._apiKey}&guest_session_id=${sessionId}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json;charset=utf-8',
+            },
+            body: JSON.stringify({ value }),
+        });
+        return await res;
     }
 }

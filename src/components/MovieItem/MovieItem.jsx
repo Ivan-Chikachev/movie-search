@@ -8,13 +8,13 @@ import Description from './Description';
 const { Meta } = Card;
 
 const MovieItem = ({
-                       poster_path, title, release_date, overview,
+                      id, poster_path, title, release_date, overview, vote_average, valueRate, onChangeRateMovie,
 }) => {
     const date = release_date
         ? format(new Date(release_date), 'MMMM d, yyyy')
         : null;
     const src = poster_path
-        ? `https://www.themoviedb.org/t/p/w300_and_h450_bestv2/${poster_path}`
+        ? `https://image.tmdb.org/t/p/w500${poster_path}`
         : defaultImage;
 
     return (
@@ -26,8 +26,12 @@ const MovieItem = ({
                 }
                 description={(
                     <Description
+                        id={id}
+                        onChangeRateMovie={onChangeRateMovie}
                         overview={overview}
                         date={date}
+                        voteAverage={vote_average}
+                        valueRate={valueRate}
                     />
                   )}
             />
