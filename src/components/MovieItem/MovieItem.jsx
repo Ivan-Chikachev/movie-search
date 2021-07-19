@@ -8,7 +8,8 @@ import Description from './Description';
 const { Meta } = Card;
 
 const MovieItem = ({
-                      id, poster_path, title, release_date, overview, vote_average, valueRate, onChangeRateMovie,
+                      id, poster_path, title, release_date, overview, vote_average, onChangeRateMovie,
+                       guestMoviesRating,
 }) => {
     const date = release_date
         ? format(new Date(release_date), 'MMMM d, yyyy')
@@ -31,7 +32,7 @@ const MovieItem = ({
                         overview={overview}
                         date={date}
                         voteAverage={vote_average}
-                        valueRate={valueRate}
+                        guestMoviesRating={guestMoviesRating}
                     />
                   )}
             />
@@ -42,13 +43,20 @@ const MovieItem = ({
 
 MovieItem.defaultProps = {
     poster_path: '',
+    onChangeRateMovie: () => {
+    },
+
 };
 
 MovieItem.propTypes = {
+    id: PropTypes.number.isRequired,
+    vote_average: PropTypes.number.isRequired,
+    onChangeRateMovie: PropTypes.func,
     poster_path: PropTypes.string,
     title: PropTypes.string.isRequired,
     release_date: PropTypes.string.isRequired,
     overview: PropTypes.string.isRequired,
+    guestMoviesRating: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export default MovieItem;

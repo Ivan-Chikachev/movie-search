@@ -8,12 +8,13 @@ import MovieItem from '../MovieItem/MovieItem';
 import MoviesPagination from '../Pagination';
 
 const GuestSessionMovies = ({
-                    isLoad, movies, isError, currentPage,
-                    totalMovies, onPaginationChange, valueRate,
-                }) => {
-    const hasData = !movies.length && !isLoad && !isError;
+                                isLoad, guestMovies, isError, currentGuestMoviesPage,
+                                totalGuestSessionMovies, onPaginationGuestMoviesChange,
+                                guestMoviesRating,
+                            }) => {
+    const hasData = !guestMovies.length && !isLoad && !isError;
 
-    const errorMessage = isError && !movies.length ? <Error /> : null;
+    const errorMessage = isError && !guestMovies.length ? <Error /> : null;
     const loader = isLoad ? <Loader /> : null;
     const notFound = hasData ? <NotFound /> : null;
 
@@ -35,17 +36,17 @@ const GuestSessionMovies = ({
                 </Col>
             </Row>
             <Row justify="center">
-                {movies.map((i) => (
+                {guestMovies.map((i) => (
                     <Col span={10} key={i.id}>
-                        <MovieItem {...i} valueRate={valueRate} />
+                        <MovieItem {...i} guestMoviesRating={guestMoviesRating} />
                     </Col>
                 ))}
             </Row>
             <Row justify="center">
                 <MoviesPagination
-                    onPaginationChange={onPaginationChange}
-                    currentPage={currentPage}
-                    total={totalMovies}
+                    onPaginationChange={onPaginationGuestMoviesChange}
+                    currentPage={currentGuestMoviesPage}
+                    total={totalGuestSessionMovies}
                 />
             </Row>
         </div>
@@ -53,16 +54,17 @@ const GuestSessionMovies = ({
 };
 
 GuestSessionMovies.defaulProps = {
-    onPaginationChange: () => {
+    onPaginationGuestMoviesChange: () => {
     },
 };
 GuestSessionMovies.propTypes = {
     isLoad: PropTypes.bool.isRequired,
-    movies: PropTypes.arrayOf(PropTypes.object).isRequired,
+    guestMovies: PropTypes.arrayOf(PropTypes.object).isRequired,
     isError: PropTypes.bool.isRequired,
-    currentPage: PropTypes.number.isRequired,
-    totalMovies: PropTypes.number.isRequired,
-    onPaginationChange: PropTypes.func.isRequired,
+    currentGuestMoviesPage: PropTypes.number.isRequired,
+    totalGuestSessionMovies: PropTypes.number.isRequired,
+    onPaginationGuestMoviesChange: PropTypes.func.isRequired,
+    guestMoviesRating: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export default GuestSessionMovies;

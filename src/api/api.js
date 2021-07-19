@@ -20,9 +20,9 @@ export default class moviesAPI {
         return await this.getResource(`/authentication/guest_session/new?${this._apiKey}`);
     }
 
-    async getGuestSessionMovies() {
+    async getGuestSessionMovies(page) {
         const sessionId = sessionStorage.getItem('guest_session_id');
-        return await this.getResource(`/guest_session/${sessionId}/rated/movies?${this._apiKey}`);
+        return await this.getResource(`/guest_session/${sessionId}/rated/movies?${this._apiKey}&page=${page}`);
     }
 
     async setRateMovie(id, value) {

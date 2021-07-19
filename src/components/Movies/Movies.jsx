@@ -4,14 +4,15 @@ import PropTypes from 'prop-types';
 import Error from '../Error';
 import Loader from '../Loader';
 import NotFound from '../NotFound';
-import SearchMovie from '../Search';
+import SearchMovie from '../SearchMovie';
 import MovieItem from '../MovieItem/MovieItem';
 import MoviesPagination from '../Pagination';
 
 const Movies = ({
                     isLoad, movies, isError, currentPage,
                     totalMovies, onPaginationChange,
-                    onChange, valueRate, onChangeRateMovie,
+                    onChangeInput, onChangeRateMovie,
+                    guestMoviesRating,
                 }) => {
     const hasData = !movies.length && !isLoad && !isError;
 
@@ -23,7 +24,7 @@ const Movies = ({
         <div>
             <Row justify="center">
                 <Col span={20}>
-                    <SearchMovie onChange={onChange} />
+                    <SearchMovie onChangeInput={onChangeInput} />
                 </Col>
             </Row>
             <Row justify="center">
@@ -44,7 +45,11 @@ const Movies = ({
             <Row justify="center">
                 {movies.map((i) => (
                     <Col span={10} key={i.id}>
-                        <MovieItem {...i} valueRate={valueRate} onChangeRateMovie={onChangeRateMovie} />
+                        <MovieItem
+                            {...i}
+                            guestMoviesRating={guestMoviesRating}
+                            onChangeRateMovie={onChangeRateMovie}
+                        />
                     </Col>
                 ))}
             </Row>
@@ -62,9 +67,10 @@ const Movies = ({
 Movies.defaulProps = {
     onPaginationChange: () => {
     },
-    onChange: () => {
+    onChangeInput: () => {
     },
-    onChangeRateMovie: () => {},
+    onChangeRateMovie: () => {
+    },
 };
 Movies.propTypes = {
     isLoad: PropTypes.bool.isRequired,
@@ -73,9 +79,9 @@ Movies.propTypes = {
     currentPage: PropTypes.number.isRequired,
     totalMovies: PropTypes.number.isRequired,
     onPaginationChange: PropTypes.func.isRequired,
-    onChange: PropTypes.func.isRequired,
+    onChangeInput: PropTypes.func.isRequired,
     onChangeRateMovie: PropTypes.func.isRequired,
-    valueRate: PropTypes.number.isRequired,
+    guestMoviesRating: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export default Movies;

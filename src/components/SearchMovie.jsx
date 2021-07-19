@@ -3,21 +3,21 @@ import { Input } from 'antd';
 import PropTypes from 'prop-types';
 import debounce from 'lodash.debounce';
 
-const SearchMovie = ({ onChange }) => (
+const SearchMovie = ({ onChangeInput }) => (
     <Input
         placeholder="input search text"
         allowClear
-        onChange={debounce(onChange, 500)}
+        onChange={debounce(onChangeInput, 500)}
     />
 );
 
 SearchMovie.defaultProps = {
-    onChange: () => {
+    onChangeInput: () => {
     },
 };
 
 SearchMovie.propTypes = {
-    onChange: PropTypes.func,
+    onChangeInput: PropTypes.func,
 };
 
 export default SearchMovie;

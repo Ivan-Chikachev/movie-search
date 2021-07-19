@@ -8,8 +8,9 @@ import Rating from '../../Rating';
 const { Text } = Typography;
 
 const Description = ({
- date, id, overview, voteAverage, valueRate, onChangeRateMovie,
-}) => (
+                         date, id, overview, voteAverage, onChangeRateMovie,
+                         guestMoviesRating,
+                     }) => (
 
     <div>
         <Text strong>{date}</Text>
@@ -17,15 +18,23 @@ const Description = ({
         <RateMovie
             onChangeRateMovie={onChangeRateMovie}
             id={id}
-            valueRate={valueRate}
+            guestMoviesRating={guestMoviesRating}
         />
         <Rating voteAverage={voteAverage} />
     </div>
 );
+Description.defaultProps = {
+    onChangeRateMovie: () => {
+    },
+};
 
 Description.propTypes = {
+    voteAverage: PropTypes.number.isRequired,
     date: PropTypes.string.isRequired,
     overview: PropTypes.string.isRequired,
+    id: PropTypes.number.isRequired,
+    guestMoviesRating: PropTypes.arrayOf(PropTypes.object).isRequired,
+    onChangeRateMovie: PropTypes.func,
 };
 
 export default Description;
