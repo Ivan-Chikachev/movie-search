@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Rating from './Rating';
 
 const Title = ({ voteAverage, title }) => (
-        <div style={{ display: 'flex', justifyContent: 'spaceBetween', alignItems: 'center' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
             <span style={{ width: '200px', whiteSpace: 'normal' }}>{title}</span>
             <Rating voteAverage={voteAverage} />
         </div>
