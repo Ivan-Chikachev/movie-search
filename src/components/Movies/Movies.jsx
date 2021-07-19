@@ -23,7 +23,11 @@ const Movies = ({
     return (
         <div>
             <Row justify="center">
-                <Col span={20}>
+                <Col
+                    xl={20}
+                    sm={20}
+                    xs={23}
+                >
                     <SearchMovie onChangeInput={onChangeInput} />
                 </Col>
             </Row>
@@ -44,7 +48,12 @@ const Movies = ({
             </Row>
             <Row justify="center">
                 {movies.map((i) => (
-                    <Col span={10} key={i.id}>
+                    <Col
+                        xl={10}
+                        sm={20}
+                        xs={23}
+                        key={i.id}
+                    >
                         <MovieItem
                             {...i}
                             guestMoviesRating={guestMoviesRating}

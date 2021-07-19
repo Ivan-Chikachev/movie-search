@@ -3,12 +3,11 @@ import { Typography } from 'antd';
 import PropTypes from 'prop-types';
 import cutText from '../../functions/cutText';
 import RateMovie from './RateMovies';
-import Rating from '../../Rating';
 
 const { Text } = Typography;
 
 const Description = ({
-                         date, id, overview, voteAverage, onChangeRateMovie,
+                         date, id, overview, onChangeRateMovie,
                          guestMoviesRating,
                      }) => (
 
@@ -20,16 +19,15 @@ const Description = ({
             id={id}
             guestMoviesRating={guestMoviesRating}
         />
-        <Rating voteAverage={voteAverage} />
     </div>
 );
+
 Description.defaultProps = {
     onChangeRateMovie: () => {
     },
 };
 
 Description.propTypes = {
-    voteAverage: PropTypes.number.isRequired,
     date: PropTypes.string.isRequired,
     overview: PropTypes.string.isRequired,
     id: PropTypes.number.isRequired,

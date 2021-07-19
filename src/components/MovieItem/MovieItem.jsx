@@ -4,13 +4,14 @@ import { format } from 'date-fns';
 import PropTypes from 'prop-types';
 import defaultImage from '../../access/defaultImage.jpg';
 import Description from './Description';
+import Title from '../Title';
 
 const { Meta } = Card;
 
 const MovieItem = ({
-                      id, poster_path, title, release_date, overview, vote_average, onChangeRateMovie,
+                       id, poster_path, title, release_date, overview, vote_average, onChangeRateMovie,
                        guestMoviesRating,
-}) => {
+                   }) => {
     const date = release_date
         ? format(new Date(release_date), 'MMMM d, yyyy')
         : null;
@@ -20,10 +21,11 @@ const MovieItem = ({
 
     return (
         <Card>
+
             <Meta
-                title={title}
+                title={<Title title={title} voteAverage={vote_average} />}
                 avatar={
-                    <img src={src} alt="" width={200} height={320} />
+                    <img src={src} alt="" width={180} height={290} />
                 }
                 description={(
                     <Description
@@ -31,11 +33,11 @@ const MovieItem = ({
                         onChangeRateMovie={onChangeRateMovie}
                         overview={overview}
                         date={date}
-                        voteAverage={vote_average}
                         guestMoviesRating={guestMoviesRating}
                     />
-                  )}
+                )}
             />
+
         </Card>
 
     );

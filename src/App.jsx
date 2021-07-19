@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import './App.css';
 import 'antd/dist/antd.css';
 import { Layout, Tabs } from 'antd';
 import moviesAPI from './api/api';
@@ -124,7 +123,7 @@ export default class App extends Component {
             <Layout>
                 <Content>
                     <Tabs
-defaultActiveKey="1" centered onChange={(key) => {
+                        defaultActiveKey="1" centered onChange={(key) => {
                         if (key === '2') this.getGuestSessionMovies(this.state.currentGuestMoviesPage);
                     }}
                     >

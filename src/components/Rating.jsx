@@ -11,12 +11,12 @@ const Rating = ({ voteAverage }) => {
     const percent = (100 * voteAverage) / 10;
 
     return (
-        <Progress
-type="circle" percent={percent}
-                  strokeColor={color}
-                  format={() => voteAverage}
-                  width={40}
-        />
+            <Progress
+                type="circle" percent={percent}
+                strokeColor={color}
+                format={() => voteAverage}
+                width={40}
+            />
     );
 };
 
