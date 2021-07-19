@@ -9,8 +9,7 @@ import MoviesPagination from '../Pagination';
 
 const GuestSessionMovies = ({
                     isLoad, movies, isError, currentPage,
-                    totalMovies, onPaginationChange,
-                    onChange, valueRate,
+                    totalMovies, onPaginationChange, valueRate,
                 }) => {
     const hasData = !movies.length && !isLoad && !isError;
 
@@ -51,6 +50,19 @@ const GuestSessionMovies = ({
             </Row>
         </div>
     );
+};
+
+GuestSessionMovies.defaulProps = {
+    onPaginationChange: () => {
+    },
+};
+GuestSessionMovies.propTypes = {
+    isLoad: PropTypes.bool.isRequired,
+    movies: PropTypes.arrayOf(PropTypes.object).isRequired,
+    isError: PropTypes.bool.isRequired,
+    currentPage: PropTypes.number.isRequired,
+    totalMovies: PropTypes.number.isRequired,
+    onPaginationChange: PropTypes.func.isRequired,
 };
 
 export default GuestSessionMovies;

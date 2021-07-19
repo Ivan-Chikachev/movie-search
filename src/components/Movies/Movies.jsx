@@ -64,6 +64,7 @@ Movies.defaulProps = {
     },
     onChange: () => {
     },
+    onChangeRateMovie: () => {},
 };
 Movies.propTypes = {
     isLoad: PropTypes.bool.isRequired,
@@ -73,6 +74,8 @@ Movies.propTypes = {
     totalMovies: PropTypes.number.isRequired,
     onPaginationChange: PropTypes.func.isRequired,
     onChange: PropTypes.func.isRequired,
+    onChangeRateMovie: PropTypes.func.isRequired,
+    valueRate: PropTypes.number.isRequired,
 };
 
 export default Movies;

@@ -70,6 +70,8 @@
     "no-return-await": 0,
     "camelcase": 0,
     "indent": 0,
-    "no-multi-spaces": 0
+    "no-multi-spaces": 0,
+    "max-len": 0,
+    "no-nested-ternary": 0
   }
 }
