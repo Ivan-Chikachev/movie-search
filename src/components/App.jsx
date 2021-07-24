@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import 'antd/dist/antd.css';
 import { Layout, Tabs } from 'antd';
-import moviesAPI from './api/api';
-import GuestSessionMovies from './components/GuestSessionMovies/GuestSessionMovies';
-import Movies from './components/Movies/Movies';
+import moviesAPI from '../api/api';
+import GuestSessionMovies from './GuestSessionMovies';
+import Movies from './Movies';
+import '../App.css';
 
 const { TabPane } = Tabs;
 const { Content } = Layout;

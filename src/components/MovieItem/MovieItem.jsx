@@ -1,53 +1,33 @@
 import React from 'react';
 import { Card } from 'antd';
-import { format } from 'date-fns';
 import PropTypes from 'prop-types';
-import defaultImage from '../../access/defaultImage.jpg';
 import Description from './Description';
-import Title from '../Title';
-
-const { Meta } = Card;
+import Title from './Title';
+import RateMovie from './RateMovies';
+import Avatar from './Avatar';
 
 const MovieItem = ({
                        id, poster_path, title, release_date, overview, vote_average, onChangeRateMovie,
                        guestMoviesRating,
-                   }) => {
-    const date = release_date
-        ? format(new Date(release_date), 'MMMM d, yyyy')
-        : null;
-    const src = poster_path
-        ? `https://image.tmdb.org/t/p/w500${poster_path}`
-        : defaultImage;
-
-    return (
+                   }) => (
         <Card>
-
-            <Meta
-                title={<Title title={title} voteAverage={vote_average} />}
-                avatar={
-                    <img src={src} alt="" width={180} height={290} />
-                }
-                description={(
-                    <Description
-                        id={id}
-                        onChangeRateMovie={onChangeRateMovie}
-                        overview={overview}
-                        date={date}
-                        guestMoviesRating={guestMoviesRating}
-                    />
-                )}
-            />
-
+            <div className="card">
+                <Avatar poster_path={poster_path} />
+                <Title release_date={release_date} title={title} voteAverage={vote_average} />
+                <Description overview={overview} />
+                <RateMovie
+                    onChangeRateMovie={onChangeRateMovie}
+                    id={id}
+                    guestMoviesRating={guestMoviesRating}
+                />
+            </div>
         </Card>
-
     );
-};
 
 MovieItem.defaultProps = {
     poster_path: '',
     onChangeRateMovie: () => {
     },
-
 };
 
 MovieItem.propTypes = {

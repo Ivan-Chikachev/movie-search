@@ -1,11 +1,11 @@
 import React from 'react';
 import { Col, Row } from 'antd';
 import PropTypes from 'prop-types';
-import Error from '../Error';
-import Loader from '../Loader';
-import NotFound from '../NotFound';
-import MovieItem from '../MovieItem/MovieItem';
-import MoviesPagination from '../Pagination';
+import Error from './Error';
+import Loader from './Loader';
+import NotFound from './NotFound';
+import MovieItem from './MovieItem/MovieItem';
+import MoviesPagination from './Pagination';
 
 const GuestSessionMovies = ({
                                 isLoad, guestMovies, isError, currentGuestMoviesPage,
@@ -19,25 +19,19 @@ const GuestSessionMovies = ({
     const notFound = hasData ? <NotFound /> : null;
 
     return (
-        <div>
+        <div className="movie-container">
             <Row justify="center">
-                <Col span={2}>
-                    {loader}
-                </Col>
+                <Col span={2}>{loader}</Col>
             </Row>
             <Row justify="center">
-                <Col span={18}>
-                    {notFound}
-                </Col>
+                <Col span={18}>{notFound}</Col>
             </Row>
             <Row justify="center">
-                <Col span={10}>
-                    {errorMessage}
-                </Col>
+                <Col span={10}>{errorMessage}</Col>
             </Row>
             <Row justify="center">
                 {guestMovies.map((i) => (
-                    <Col span={10} key={i.id}>
+                    <Col xl={10} sm={20} xs={23} key={i.id}>
                         <MovieItem {...i} guestMoviesRating={guestMoviesRating} />
                     </Col>
                 ))}

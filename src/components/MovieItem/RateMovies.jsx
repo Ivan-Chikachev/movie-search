@@ -9,7 +9,9 @@ const RateMovie = ({ id, onChangeRateMovie, guestMoviesRating }) => {
     const currentRating = guestMoviesRating.find((el) => el.id === id)?.value;
 
     return (
-        <Rate count={10} value={currentRating} onChange={onChange} />
+        <div className="card__rate">
+            <Rate count={10} value={currentRating} onChange={onChange} />
+        </div>
     );
 };
 
